@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="crime"
+            type="com.example.rcui.mapapp.model.Model.Crime" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout_root">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <TextView
+            android:id="@+id/tv_crime_banner"
+            style="@style/AppTheme.TextView.Banner"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="@{crime.category}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_location_header"
+            style="@style/AppTheme.TextView.Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/header_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_crime_banner" />
+
+        <TextView
+            android:id="@+id/tv_street_name"
+            style="@style/AppTheme.TextView.Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{crime.location.street.name}"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/tv_location_header" />
+
+        <TextView
+            android:id="@+id/tv_outcome_header"
+            style="@style/AppTheme.TextView.Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/header_outcome_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_street_name" />
+
+        <TextView
+            android:id="@+id/tv_outcome_status"
+            style="@style/AppTheme.TextView.Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{crime.outcomeStatus.category ?? "-- no data --"}'
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/tv_outcome_header" />
+
+        <TextView
+            android:id="@+id/tv_date_header"
+            style="@style/AppTheme.TextView.Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/header_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_outcome_status" />
+
+        <TextView
+            android:id="@+id/tv_outcome_date"
+            style="@style/AppTheme.TextView.Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{crime.outcomeStatus.date ?? "-- no data --"}'
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date_header" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
